@@ -40,7 +40,7 @@ class HtmlManager:
 
 class AWSManager:
     def __init__(self):
-        pass
+        self.s3 = boto3.resource('s3')
 
     def upload_to_s3(self):
         s3_client = boto3.client('s3')
@@ -51,7 +51,13 @@ class AWSManager:
             logging.error(e)
             return False
         return True
-       
+
+    def in_the_s3_bucket():
+    bucket = boto3.resource('s3').Object('lmtd-class', '')
+    contents = json.load(bucket.get()['Body']) 
+    print(contents)   
+
+
 
 
 manager = HtmlManager()
