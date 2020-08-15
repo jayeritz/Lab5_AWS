@@ -1,5 +1,4 @@
 import boto3
-import json
 from botocore.exceptions import ClientError
 import logging
 
@@ -39,8 +38,6 @@ class HtmlManager:
         with open("jamilahtmlcode.html", "w") as file:
             file.write(self.my_document.my_code)
 
-        
-
 class AWSManager:
     def __init__(self):
         pass
@@ -57,7 +54,7 @@ class AWSManager:
         return True
 
     def in_the_s3_bucket(self):
-        bucket = boto3.resource('s3').Object('lmtd-class', 'jamilahtmlcode.html')
+        bucket = boto3.resource('s3').Object('lmtd-class', 'None')
         contents = json.load(bucket.get()['Body']) 
         print(contents)   
 
