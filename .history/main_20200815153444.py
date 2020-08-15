@@ -1,7 +1,4 @@
 import boto3
-from botocore.exceptions import ClientError
-import logging
-
 s3_resource = boto3.resource('s3')
 
 class HtmlDocument:
@@ -43,14 +40,7 @@ class AWSManager:
         pass
 
     def upload_to_s3(self):
-        s3_client = boto3.client('s3')
-        try:
-            response = s3_client.upload_file('jamilahtmlcode.html', 'lmtd-class', 'jamilahtmlcode.html')
-            print(response)
-        except ClientError as e:
-            logging.error(e)
-            return False
-        return True
+        pass
        
 
 
@@ -58,7 +48,3 @@ manager = HtmlManager()
 
 manager.create_html()
 manager.save_my_file()
-
-awsmanager = AWSManager()
-awsmanager.upload_to_s3()
-

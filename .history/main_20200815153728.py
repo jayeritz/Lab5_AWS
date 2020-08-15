@@ -46,7 +46,7 @@ class AWSManager:
         s3_client = boto3.client('s3')
         try:
             response = s3_client.upload_file('jamilahtmlcode.html', 'lmtd-class', 'jamilahtmlcode.html')
-            print(response)
+            print(response.statuscode)
         except ClientError as e:
             logging.error(e)
             return False
@@ -58,7 +58,3 @@ manager = HtmlManager()
 
 manager.create_html()
 manager.save_my_file()
-
-awsmanager = AWSManager()
-awsmanager.upload_to_s3()
-

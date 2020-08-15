@@ -58,7 +58,3 @@ manager = HtmlManager()
 
 manager.create_html()
 manager.save_my_file()
-
-awsmanager = AWSManager()
-awsmanager.upload_to_s3()
-
