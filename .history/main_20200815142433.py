@@ -41,7 +41,6 @@ class AWSManager:
     def upload_to_s3():
         boto3.client('s3').upload_file('jamilahtmlcode.html', 'lmtd-class', 'jamilahtmlcode.html')
         
-        #from the documentation
         s3_client = boto3.client('s3')
         try:
             response = s3_client.upload_file(jamilahtmlcode.html, bucket, object_name)
