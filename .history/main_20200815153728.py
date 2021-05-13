@@ -1,5 +1,4 @@
 import boto3
-import json
 from botocore.exceptions import ClientError
 import logging
 
@@ -39,37 +38,23 @@ class HtmlManager:
         with open("jamilahtmlcode.html", "w") as file:
             file.write(self.my_document.my_code)
 
-        
-
 class AWSManager:
     def __init__(self):
         pass
-       # self.s3 = boto3.resource('s3')
 
     def upload_to_s3(self):
         s3_client = boto3.client('s3')
         try:
             response = s3_client.upload_file('jamilahtmlcode.html', 'lmtd-class', 'jamilahtmlcode.html')
-            print(response)
+            print(response.statuscode)
         except ClientError as e:
             logging.error(e)
             return False
         return True
-
-    def in_the_s3_bucket(self):
-        bucket = boto3.resource('s3').Object('lmtd-class', 'jamilahtmlcode.html')
-        contents = json.load(bucket.get()['Body']) 
-        print(contents)   
-
-
+       
 
 
 manager = HtmlManager()
 
 manager.create_html()
 manager.save_my_file()
-
-awsmanager = AWSManager()
-#awsmanager.upload_to_s3()
-awsmanager.in_the_s3_bucket()
-

@@ -39,8 +39,6 @@ class HtmlManager:
         with open("jamilahtmlcode.html", "w") as file:
             file.write(self.my_document.my_code)
 
-        
-
 class AWSManager:
     def __init__(self):
         pass
